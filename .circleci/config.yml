@@ -12,7 +12,7 @@ jobs:
   build:
     docker:
       - image: circleci/openjdk:latest
-    #working_directory: ~/../app
+    working_directory: ~/theater-vote
     steps:
       - checkout
       - restore_cache:
@@ -33,7 +33,7 @@ jobs:
   dock:
     docker:
       - image: circleci/openjdk:latest
-    #working_directory: ~/../app
+    working_directory: ~/theater-vote
     steps:
       - checkout
       - restore_cache:
