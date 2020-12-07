@@ -2,7 +2,7 @@
 /shelf/
 /workspace.xml
 # Datasource local storage ignored files
-/../../../../../../:\Users\pierr\nuitDeLinfo\theater-vote\.idea/dataSources/
+/../../../../../../../:\Users\pierr\nuitDeLinfo\theater-vote\app\.idea/dataSources/
 /dataSources.local.xml
 # Editor-based HTTP Client requests
 /httpRequests/
