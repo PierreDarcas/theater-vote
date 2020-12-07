@@ -12,12 +12,12 @@ jobs:
   build:
     docker:
       - image: circleci/openjdk:latest
-    working_directory: ~/theater-vote
+    working_directory: ~/app
     steps:
       - checkout
       - restore_cache:
           keys:
-            - tp1-api-{{ checksum "pom.xml" }}
+            - app-{{ checksum "pom.xml" }}
       - run: mvn dependency:go-offline
       - save_cache:
           paths:
@@ -33,7 +33,7 @@ jobs:
   dock:
     docker:
       - image: circleci/openjdk:latest
-    working_directory: ~/theater-vote
+    working_directory: ~/app
     steps:
       - checkout
       - restore_cache:
