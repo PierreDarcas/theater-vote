@@ -8,11 +8,13 @@ import com.theater.app.repositories.ReviewRepository;
 import org.apache.commons.collections4.IterableUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Optional;
 
 @RestController
 @RequestMapping(path = "/review")
@@ -36,4 +38,16 @@ public class ReviewController {
             throw new NoSuchElementException("Aucune critiques");
         }
     }
+
+    @GetMapping(path = "/{reviewId}")
+    public ReviewDTO findReviewById(@PathVariable("reviewId") Long reviewId){
+        Optional<Review> review = this.reviewRepository.findById(reviewId);
+        if(review.isPresent()){
+            return this.reviewConverter.entityToDTO(review.get());
+        }else {
+            throw new NoSuchElementException("Critique inexistante");
+        }
+    }
+    
+
 }
