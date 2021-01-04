@@ -1,10 +1,13 @@
 package com.theater.app.bootstrap;
 
 import com.theater.app.converter.PlayConverter;
+import com.theater.app.converter.ReviewConverter;
 import com.theater.app.converter.ViewerConverter;
 import com.theater.app.dto.PlayDTO;
+import com.theater.app.dto.ReviewDTO;
 import com.theater.app.dto.ViewerDTO;
 import com.theater.app.repositories.PlayRepository;
+import com.theater.app.repositories.ReviewRepository;
 import com.theater.app.repositories.ViewerRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -22,6 +25,7 @@ public class DataLoader implements CommandLineRunner{
     public void run(String... args){
         loadViewers();
         loadPlays();
+        loadReviews();
     }
 
     private void loadViewers(){
@@ -53,15 +57,36 @@ public class DataLoader implements CommandLineRunner{
         playRepository.saveAll(playConverter.dtoToEntity(playDTOList));
     }
 
-    public DataLoader(ViewerRepository viewerRepository, ViewerConverter viewerConverter, PlayRepository playRepository, PlayConverter playConverter) {
+    public void loadReviews(){
+        String[] title = {"Trés bonne expérience", "Un bon moment"};
+        int[] note = {5,4};
+        String[] comment = {
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc luctus lacinia tincidunt. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla ut convallis magna. Proin in suscipit velit.",
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam semper massa vel elit porttitor scelerisque fermentum sit amet tortor. Aliquam erat volutpat. Praesent diam sapien, dignissim et auctor porttitor, lacinia ut."
+        };
+        Long[] viewerId = {1L,2L};
+        Long[] playId = {2L,1L};
+        List<ReviewDTO> reviewDTOList = new ArrayList<>();
+        for(int i = 0 ; i < 2 ; i++){
+            ReviewDTO reviewDTO = new ReviewDTO(title[i],note[i],comment[i],viewerId[i],playId[i]);
+            reviewDTOList.add(reviewDTO);
+        }
+        reviewRepository.saveAll(reviewConverter.dtoToEntity(reviewDTOList));
+    }
+
+    public DataLoader(ViewerRepository viewerRepository, ViewerConverter viewerConverter, PlayRepository playRepository, PlayConverter playConverter, ReviewRepository reviewRepository, ReviewConverter reviewConverter) {
         this.viewerRepository = viewerRepository;
         this.viewerConverter = viewerConverter;
         this.playRepository = playRepository;
         this.playConverter = playConverter;
+        this.reviewRepository = reviewRepository;
+        this.reviewConverter = reviewConverter;
     }
 
     private final ViewerRepository viewerRepository;
     private final ViewerConverter viewerConverter;
     private final PlayRepository playRepository;
     private final PlayConverter playConverter;
+    private final ReviewRepository reviewRepository;
+    private final ReviewConverter reviewConverter;
 }
