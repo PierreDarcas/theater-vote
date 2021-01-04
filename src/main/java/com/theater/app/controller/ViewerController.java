@@ -1,14 +1,13 @@
 package com.theater.app.controller;
 
 import com.theater.app.converter.ViewerConverter;
+import com.theater.app.dto.ReviewDTO;
 import com.theater.app.dto.ViewerDTO;
+import com.theater.app.model.Review;
 import com.theater.app.model.Viewer;
 import com.theater.app.repositories.ViewerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.apache.commons.collections4.IterableUtils;
 
 import java.util.List;
@@ -48,6 +47,21 @@ public class ViewerController {
         }
     }
 
+    @PostMapping(path ="/")
+    public ViewerDTO createViewer(@RequestBody ViewerDTO newViewerDTO){
+        return viewerConverter.entityToDTO(viewerRepository.save(this.viewerConverter.dtoToEntity(newViewerDTO)));
+    }
 
+    @PutMapping(path ="/{viewerId}")
+    public ViewerDTO updateViewer(@PathVariable("viewerId") Long viewerId, @RequestBody ViewerDTO newViewerDTO){
+        Optional<Viewer> viewer = this.viewerRepository.findById(viewerId);
+        if(!viewer.isPresent()){
+            throw new NoSuchElementException("Critique inexistante");
+        }else if(viewer.get().getId() != newViewerDTO.getIdViewer()){
+            throw new IllegalArgumentException();
+        }else{
+            return  viewerConverter.entityToDTO(viewerRepository.save(this.viewerConverter.dtoToEntity(newViewerDTO)));
+        }
+    }
 
 }
