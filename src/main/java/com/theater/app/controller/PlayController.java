@@ -49,4 +49,5 @@ public class PlayController {
             throw new NoSuchElementException("Critique inexistante");
         }
     }
+
 }

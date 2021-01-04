@@ -3,8 +3,9 @@ package com.theater.app.controller;
 import com.theater.app.converter.ReviewConverter;
 import com.theater.app.dto.ReviewDTO;
 import com.theater.app.model.Review;
-import com.theater.app.model.Viewer;
+import com.theater.app.repositories.PlayRepository;
 import com.theater.app.repositories.ReviewRepository;
+import com.theater.app.repositories.ViewerRepository;
 import org.apache.commons.collections4.IterableUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,11 +23,15 @@ public class ReviewController {
 
     private final ReviewConverter reviewConverter;
     private final ReviewRepository reviewRepository;
+    private final ViewerRepository viewerRepository;
+    private final PlayRepository playRepository;
 
     @Autowired
-    public ReviewController(ReviewConverter reviewConverter, ReviewRepository reviewRepository) {
+    public ReviewController(ReviewConverter reviewConverter, ReviewRepository reviewRepository, ViewerRepository viewerRepository, PlayRepository playRepository) {
         this.reviewConverter = reviewConverter;
         this.reviewRepository = reviewRepository;
+        this.viewerRepository = viewerRepository;
+        this.playRepository = playRepository;
     }
 
     @GetMapping
@@ -35,7 +40,7 @@ public class ReviewController {
         if (IterableUtils.size(reviews) > 0){
             return this.reviewConverter.entityToDTO((IterableUtils.toList(reviews)));
         }else {
-            throw new NoSuchElementException("Aucune critiques");
+            throw new NoSuchElementException("Aucune critique");
         }
     }
 
@@ -49,5 +54,19 @@ public class ReviewController {
         }
     }
 
+    @GetMapping(path = "/viewer/{viewerId}")
+    public Iterable<ReviewDTO> findReviewsByViewer(@PathVariable("viewerId") Long viewerId){
+        if(!viewerRepository.existsById(viewerId)){
+            throw new NoSuchElementException("Spectateur inexistant");
+        }
+        return this.reviewConverter.entityToDTO((List<Review>) this.reviewRepository.findAllByViewerId(viewerId));
+    }
 
+    @GetMapping(path = "/play/{playId}")
+    public Iterable<ReviewDTO> findReviewsByPlays(@PathVariable("playId") Long playId){
+        if(!viewerRepository.existsById(playId)){
+            throw new NoSuchElementException("Spectateur inexistant");
+        }
+        return this.reviewConverter.entityToDTO((List<Review>) this.reviewRepository.findAllByPlayId(playId));
+    }
 }
