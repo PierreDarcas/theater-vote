@@ -8,10 +8,7 @@ import com.theater.app.repositories.ReviewRepository;
 import com.theater.app.repositories.ViewerRepository;
 import org.apache.commons.collections4.IterableUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -68,5 +65,22 @@ public class ReviewController {
             throw new NoSuchElementException("Spectateur inexistant");
         }
         return this.reviewConverter.entityToDTO((List<Review>) this.reviewRepository.findAllByPlayId(playId));
+    }
+
+    @PostMapping(path ="/")
+    public ReviewDTO createReview(@RequestBody ReviewDTO newReviewDTO){
+            return reviewConverter.entityToDTO(reviewRepository.save(this.reviewConverter.dtoToEntity(newReviewDTO)));
+    }
+
+    @PutMapping(path ="/{reviewId}")
+    public ReviewDTO updateReview(@PathVariable("reviewId") Long reviewId, @RequestBody ReviewDTO newReviewDTO){
+        Optional<Review> review = this.reviewRepository.findById(reviewId);
+        if(!review.isPresent()){
+            throw new NoSuchElementException("Critique inexistante");
+        }else if(review.get().getId() != newReviewDTO.getIdReview()){
+            throw new IllegalArgumentException();
+        }else{
+            return  reviewConverter.entityToDTO(reviewRepository.save(this.reviewConverter.dtoToEntity(newReviewDTO)));
+        }
     }
 }
