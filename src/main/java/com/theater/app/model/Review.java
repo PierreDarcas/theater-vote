@@ -2,6 +2,8 @@ package com.theater.app.model;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.Cascade;
+import org.springframework.web.bind.annotation.DeleteMapping;
 
 import javax.persistence.*;
 

@@ -64,4 +64,8 @@ public class ViewerController {
         }
     }
 
+    @DeleteMapping(path = "/{viewerId}")
+    public void deleteById(@PathVariable("viewerId") Long viewerId){
+            this.viewerRepository.deleteById(viewerId);
+    }
 }

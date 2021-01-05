@@ -66,4 +66,9 @@ public class PlayController {
         }
     }
 
+    @DeleteMapping(path = "/{playId}")
+    public void deletePlay(@PathVariable("playId") Long playId){
+        this.playRepository.deleteById(playId);
+    }
+
 }

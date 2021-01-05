@@ -83,4 +83,9 @@ public class ReviewController {
             return  reviewConverter.entityToDTO(reviewRepository.save(this.reviewConverter.dtoToEntity(newReviewDTO)));
         }
     }
+
+    @DeleteMapping(path = "/{reviewId}")
+    public void deleteById(@PathVariable("reviewId") Long reviewId){
+        this.reviewRepository.deleteById(reviewId);
+    }
 }

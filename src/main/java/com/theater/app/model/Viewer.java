@@ -2,11 +2,10 @@ package com.theater.app.model;
 
 import lombok.Getter;
 import lombok.Setter;
+import net.minidev.json.annotate.JsonIgnore;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity(name = "Viewer")
 @Getter
@@ -18,5 +17,9 @@ public class Viewer extends BaseEntity{
     private String email;
     private String username;
     private String password;
+
+    @OneToMany(mappedBy = "viewer", cascade = CascadeType.ALL, orphanRemoval = false)
+    @JsonIgnore
+    private Set<Review> reviews;
 
 }
