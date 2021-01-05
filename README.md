@@ -76,11 +76,11 @@ Ce TP est le projet du cours et donnera votre note de ce cours !
 
 # Jalons 
 
-- [ ] Premier Jalon - Donnez moi juste l'url du projet
+- [X] Premier Jalon - Donnez moi juste l'url du projet
 Envoyez moi pour le 14/12/20 vos repos github à l'adresse pro.loris.sierra@gmail.com.
 Si vous souhaitez garder votre repo privé, ajoutez mon compte github loris-intergalactique à votre ACL.
 Ce sont les repos github qui contiendront votre code et sur lesquels je vais m'appuyer. Un fichier README.md doit apparaître avec vos premières idées d'application.
-- [ ] Deuxième jalon - Faut que ça marche !
+- [X] Deuxième jalon - Faut que ça marche !
 Au 3/01/21, vos projets doivent fonctionner (les projets, avec ou sans vulnérabilité).
 Voici les exigences de ce jalon :
 - Je veux pouvoir lancer une image Docker et que tout fonctionne correctement. 
