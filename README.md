@@ -8,8 +8,8 @@ Les fonctionnalités de l’application sont les suivantes :
 * Lister toutes les critiques poster par un spectateur ;
 * Lister toutes les critiques à propos d’une pièce.
 # Installation de l’API :
-```docker pull pdarcas/theater-app:latest ```
-```docker run -it -p 8282:8282 pdarcas/theater-app:latest```
+* ```docker pull pdarcas/theater-app:latest ```
+* ```docker run -it -p 8282:8282 pdarcas/theater-app:latest```
 ## Test:
 http://localhost:8282/toto
 
@@ -18,9 +18,9 @@ http://localhost:8282/toto
 [![](https://mermaid.ink/img/eyJjb2RlIjoiZ3JhcGggVERcbiAgQVtPU10gLS0-QltEb2NrZXJdXG4gIEIgLS0-IENbVG9tY2F0XVxuICBDIC0tPiBFW1NwcmluZ0Jvb3RdXG4gIEIgLS4gQkREIEgyIC4tRVxuICBFIC0tPiBGW0FQSS10aGVhdGVyVm90ZV1cbiAgRiAtLT4gSFtcIi92aWV3ZXJcIl1cbiAgRiAtLT4gSVtcIi9yZXZpZXdcIl1cbiAgRiAtLT4gSltcIi9wbGF5XCJdXG5cblx0XHQiLCJtZXJtYWlkIjp7fSwidXBkYXRlRWRpdG9yIjpmYWxzZX0)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoiZ3JhcGggVERcbiAgQVtPU10gLS0-QltEb2NrZXJdXG4gIEIgLS0-IENbVG9tY2F0XVxuICBDIC0tPiBFW1NwcmluZ0Jvb3RdXG4gIEIgLS4gQkREIEgyIC4tRVxuICBFIC0tPiBGW0FQSS10aGVhdGVyVm90ZV1cbiAgRiAtLT4gSFtcIi92aWV3ZXJcIl1cbiAgRiAtLT4gSVtcIi9yZXZpZXdcIl1cbiAgRiAtLT4gSltcIi9wbGF5XCJdXG5cblx0XHQiLCJtZXJtYWlkIjp7fSwidXBkYXRlRWRpdG9yIjpmYWxzZX0)
 
 # Endpoints
-http://localhost:8282/play
-http://localhost:8282/viewer
-http://localhost:8282/review
+* http://localhost:8282/play
+* http://localhost:8282/viewer
+* http://localhost:8282/review
 
 
 # Objectifs de sécurité
@@ -76,11 +76,11 @@ Ce TP est le projet du cours et donnera votre note de ce cours !
 
 # Jalons 
 
-- [X] Premier Jalon - Donnez moi juste l'url du projet
+- [x] Premier Jalon - Donnez moi juste l'url du projet
 Envoyez moi pour le 14/12/20 vos repos github à l'adresse pro.loris.sierra@gmail.com.
 Si vous souhaitez garder votre repo privé, ajoutez mon compte github loris-intergalactique à votre ACL.
 Ce sont les repos github qui contiendront votre code et sur lesquels je vais m'appuyer. Un fichier README.md doit apparaître avec vos premières idées d'application.
-- [X] Deuxième jalon - Faut que ça marche !
+- [x] Deuxième jalon - Faut que ça marche !
 Au 3/01/21, vos projets doivent fonctionner (les projets, avec ou sans vulnérabilité).
 Voici les exigences de ce jalon :
 - Je veux pouvoir lancer une image Docker et que tout fonctionne correctement. 
@@ -88,3 +88,4 @@ Voici les exigences de ce jalon :
 - Expliquez dans le README ce que fait votre travail :)
 - La surface d'attaque doit être faite dans un fichier mermaidjs qui apparait dans le repo.
 - Vos objectifs de sécurité (C, I, D, T) doivent apparaitre : Une note/5 et une explication
+
