@@ -1,24 +1,17 @@
 package com.theater.app.controller;
 
 import com.theater.app.converter.ViewerConverter;
-import com.theater.app.dto.ReviewDTO;
 import com.theater.app.dto.ViewerDTO;
-import com.theater.app.model.Review;
 import com.theater.app.model.Viewer;
 import com.theater.app.repositories.ViewerRepository;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.web.bind.annotation.*;
 import org.apache.commons.collections4.IterableUtils;
 
-import java.util.Date;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
-import java.util.stream.Collectors;
+
 
 @RestController
 @RequestMapping(path = "/viewer")
