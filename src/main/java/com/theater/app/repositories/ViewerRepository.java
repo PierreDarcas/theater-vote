@@ -5,5 +5,6 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface ViewerRepository  extends CrudRepository<Viewer, Long> {
 
+    Viewer findByUsername( String username );
 
 }

@@ -15,6 +15,7 @@ public class Viewer extends BaseEntity{
     private String firstname;
     private String lastname;
     private String email;
+    @Column(nullable = false, unique = true)
     private String username;
     private String password;
 
