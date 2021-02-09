@@ -18,6 +18,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .mvcMatchers("/viewer/**").authenticated()
+                .mvcMatchers("/play/**").authenticated()
                 .and().cors()
                 .and().oauth2ResourceServer().jwt();
 
