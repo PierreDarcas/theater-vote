@@ -88,4 +88,29 @@ Voici les exigences de ce jalon :
 - Expliquez dans le README ce que fait votre travail :)
 - La surface d'attaque doit être faite dans un fichier mermaidjs qui apparait dans le repo.
 - Vos objectifs de sécurité (C, I, D, T) doivent apparaitre : Une note/5 et une explication
+- [X] Troisième Jalon - Presque fin de projet
+- Soit vous avez fait un projet qui contient des vulnérabilités :
+  - Pour chaque vulnérabilité, vous la décrivez :
+    - Vous décrivez en quoi votre code est vulnérable ;
+    - Vous définissez le(s) mécanisme(s) ET le(s) principe(s) de sécurité que vous auriez du appliquer pour éviter cette vulnérabilité ;
+    - Vous indiquez la bibliothèque et sa ou ses fonctions permettant d'appliquer le mécanisme de sécurité en question ;
+    - Décrivez les tests que vous feriez pour vérifier que cet endpoint (cette page web) n'est pas vulnérable (Les tests vont vous permettre de renforcer l'implémentation des principes de dev sécurisés)
+   - (En bonus) Quel impact aurait eu cette vulnérabilité sur votre métier (Injection SQL => Fuite de données => Incident diplomatique => vous fermez votre business)
+
+---------------------------------------------------------------------
+
+- Soit vous avez fait un projet qui n'est théoriquement pas vulnérable :
+  - Pour chaque fonctionnalité de sécurité que vous ajoutez (ORM par exemple) :
+    - Vous décrivez de quoi la fonctionnalité protège votre code
+    - Vous décrivez comment la fonctionnalité protège votre code
+    - Vous définissez le(s) mécanisme(s) ET le(s) principe(s) de sécurité que votre code implique ;
+    - Décrivez les tests que vous feriez pour vérifier que cet endpoint (cette page web) n'est pas vulnérable (Les tests vont vous permettre de renforcer l'implémentation des principes de dev sécurisés)
+   - (En bonus) Quel impact aurait eu cette vulnérabilité sur votre métier (Injection SQL => Fuite de données => Incident diplomatique => vous fermez votre business)
+
+---------------------------------------------------------------------
+
+- Si vous pensez qu'un endroit est vulnérable, mais vous ne savez pas l'expliquer :
+  - Vous mettez quand même un commentaire pour dire que vous le pensez
+  - Et si vous avez plus d'infos de pourquoi vous comprenez pas, vous le mettez
+  - Si vous désactivez une fonction de sécurité : Par exemple, pour ".csrf().disable()" : Vous décrivez de quoi protégait cette option, pourquoi vous la désactivez et en quoi votre méthode est meilleure (tant que c'est équivalent en sécu. La raison peut être niveau perf ou compatibilité, ou n'importe quoi d'autre)
 
