@@ -1,6 +1,9 @@
 package com.theater.app.security;
 
-import org.springframework.beans.factory.annotation.Value;
+public class SecurityConfig {
+}
+
+/*import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -43,4 +46,4 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         return jwtDecoder;
     }
-}
+}*/
