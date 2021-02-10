@@ -27,7 +27,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Value("${auth0.audience}")
     private String audience;
 
-    @Value("${spring.security.oauth2.resourceserver.issuer-uri: https://dev-dnddcikx.eu.auth0.com/}")
+    @Value("${auth0.issuer}")
     private String issuer;
 
     @Bean
