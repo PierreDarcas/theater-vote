@@ -41,7 +41,7 @@ public class ReviewController {
         }
     }
 
-    @GetMapping(path = "/{reviewId}")
+    @GetMapping(path = "/id/{reviewId}")
     public ReviewDTO findReviewById(@PathVariable("reviewId") Long reviewId){
         Optional<Review> review = this.reviewRepository.findById(reviewId);
         if(review.isPresent()){
@@ -67,12 +67,12 @@ public class ReviewController {
         return this.reviewConverter.entityToDTO((List<Review>) this.reviewRepository.findAllByPlayId(playId));
     }
 
-    @PostMapping(path ="/")
+    @PostMapping(path ="/create")
     public ReviewDTO createReview(@RequestBody ReviewDTO newReviewDTO){
             return reviewConverter.entityToDTO(reviewRepository.save(this.reviewConverter.dtoToEntity(newReviewDTO)));
     }
 
-    @PutMapping(path ="/{reviewId}")
+    @PutMapping(path ="/update/{reviewId}")
     public ReviewDTO updateReview(@PathVariable("reviewId") Long reviewId, @RequestBody ReviewDTO newReviewDTO){
         Optional<Review> review = this.reviewRepository.findById(reviewId);
         if(!review.isPresent()){
@@ -84,7 +84,7 @@ public class ReviewController {
         }
     }
 
-    @DeleteMapping(path = "/{reviewId}")
+    @DeleteMapping(path = "/delete/{reviewId}")
     public void deleteById(@PathVariable("reviewId") Long reviewId){
         this.reviewRepository.deleteById(reviewId);
     }

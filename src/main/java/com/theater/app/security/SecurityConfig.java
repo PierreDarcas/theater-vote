@@ -16,9 +16,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
-                .mvcMatchers("/viewer/**").authenticated()
-                .mvcMatchers("/play/**").authenticated()
+        http.csrf().disable()
+                .authorizeRequests()
+                .mvcMatchers("/play").permitAll()
+                .mvcMatchers("/play/id").permitAll()
+                .mvcMatchers("/play/create").authenticated()
+                .mvcMatchers("/play/delete/*").authenticated()
+                .mvcMatchers("/play/update/*").authenticated()
+                .mvcMatchers("/review").permitAll()
+                .mvcMatchers("/review/id").permitAll()
+                .mvcMatchers("/review/viewer").permitAll()
+                .mvcMatchers("/review/play").permitAll()
+                .mvcMatchers("/review/create").permitAll()
+                .mvcMatchers("/review/update/*").authenticated()
+                .mvcMatchers("/review/delete/*").authenticated()
                 .and().cors()
                 .and().oauth2ResourceServer().jwt();
 
@@ -27,7 +38,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Value("${auth0.audience}")
     private String audience;
 
-    @Value("${auth0.issuer}")
+    @Value("${spring.security.oauth2.resourceserver.jwt.issuer-uri}")
     private String issuer;
 
     @Bean

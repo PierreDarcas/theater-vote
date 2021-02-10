@@ -47,7 +47,7 @@ public class ViewerController {
         }
     }
 
-    @PostMapping(path ="/")
+    @PostMapping(path ="/create")
     public ViewerDTO createViewer(@RequestBody ViewerDTO newViewerDTO){
         return viewerConverter.entityToDTO(viewerRepository.save(this.viewerConverter.dtoToEntity(newViewerDTO)));
     }
