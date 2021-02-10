@@ -1,8 +1,0 @@
-auth0:
-  audience: https://theater/vote
-spring:
-  security:
-    oauth2:
-      resourceserver:
-        jwt:
-          issuer-uri: https://dev-dnddcikx.eu.auth0.com/
