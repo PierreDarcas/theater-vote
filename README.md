@@ -18,9 +18,22 @@ http://localhost:8282/toto
 [![](https://mermaid.ink/img/eyJjb2RlIjoiZ3JhcGggVERcbiAgQVtPU10gLS0-QltEb2NrZXJdXG4gIEIgLS0-IENbVG9tY2F0XVxuICBDIC0tPiBFW1NwcmluZ0Jvb3RdXG4gIEIgLS4gQkREIEgyIC4tRVxuICBFIC0tPiBGW0FQSS10aGVhdGVyVm90ZV1cbiAgRiAtLT4gSFtcIi92aWV3ZXJcIl1cbiAgRiAtLT4gSVtcIi9yZXZpZXdcIl1cbiAgRiAtLT4gSltcIi9wbGF5XCJdXG5cblx0XHQiLCJtZXJtYWlkIjp7fSwidXBkYXRlRWRpdG9yIjpmYWxzZX0)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoiZ3JhcGggVERcbiAgQVtPU10gLS0-QltEb2NrZXJdXG4gIEIgLS0-IENbVG9tY2F0XVxuICBDIC0tPiBFW1NwcmluZ0Jvb3RdXG4gIEIgLS4gQkREIEgyIC4tRVxuICBFIC0tPiBGW0FQSS10aGVhdGVyVm90ZV1cbiAgRiAtLT4gSFtcIi92aWV3ZXJcIl1cbiAgRiAtLT4gSVtcIi9yZXZpZXdcIl1cbiAgRiAtLT4gSltcIi9wbGF5XCJdXG5cblx0XHQiLCJtZXJtYWlkIjp7fSwidXBkYXRlRWRpdG9yIjpmYWxzZX0)
 
 # Endpoints
-* http://localhost:8282/play
-* http://localhost:8282/viewer
-* http://localhost:8282/review
+* http://localhost:8282/play => Public
+* http://localhost:8282/play/id => Public
+* http://localhost:8282/play/create => Necessite un token
+* http://localhost:8282/play/delete/ => Necessite un token
+* http://localhost:8282/play/update/* => Necessite un token
+* http://localhost:8282/review => Public
+* http://localhost:8282/review/id => Public
+* http://localhost:8282/review/viewer => Public
+* http://localhost:8282/review/play => Public
+* http://localhost:8282/review/create => Public
+* http://localhost:8282/review/update/* => Necessite un token
+* http://localhost:8282/review/delete/* => Necessite un token
+* http://localhost:8282/viewer/id => Necessite un token
+* http://localhost:8282/viewer/create => Public
+* http://localhost:8282/viewer/delete/ => Necessite un token
+* http://localhost:8282/viewer/update/ => Necessite un token
 
 
 # Objectifs de sécurité
