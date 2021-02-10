@@ -21,7 +21,7 @@ http://localhost:8282/toto
 * http://localhost:8282/play => Public
 * http://localhost:8282/play/id => Public
 * http://localhost:8282/play/create => Necessite un token
-* http://localhost:8282/play/delete/ => Necessite un token
+* http://localhost:8282/play/delete/* => Necessite un token
 * http://localhost:8282/play/update/* => Necessite un token
 * http://localhost:8282/review => Public
 * http://localhost:8282/review/id => Public
@@ -32,8 +32,8 @@ http://localhost:8282/toto
 * http://localhost:8282/review/delete/* => Necessite un token
 * http://localhost:8282/viewer/id => Necessite un token
 * http://localhost:8282/viewer/create => Public
-* http://localhost:8282/viewer/delete/ => Necessite un token
-* http://localhost:8282/viewer/update/ => Necessite un token
+* http://localhost:8282/viewer/delete/* => Necessite un token
+* http://localhost:8282/viewer/update/* => Necessite un token
 
 
 # Objectifs de sécurité
