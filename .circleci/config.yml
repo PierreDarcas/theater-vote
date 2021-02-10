@@ -24,7 +24,7 @@ jobs:
             - ~/.m2
           key: app-{{ checksum "pom.xml" }}
       # package into a jar
-      - run: mvn clean install -x
+      - run: mvn clean install -X
       - run: mvn clean package
         # store raw contents of src code
       - store_artifacts:
