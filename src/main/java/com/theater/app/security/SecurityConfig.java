@@ -30,6 +30,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .mvcMatchers("/review/create").permitAll()
                 .mvcMatchers("/review/update/*").authenticated()
                 .mvcMatchers("/review/delete/*").authenticated()
+                .mvcMatchers("/viewer").authenticated()
+                .mvcMatchers("/viewer/id").authenticated()
+                .mvcMatchers("/viewer/create").permitAll()
+                .mvcMatchers("/viewer/delete/*").authenticated()
+                .mvcMatchers("/viewer/update/*").authenticated()
                 .and().cors()
                 .and().oauth2ResourceServer().jwt();
 

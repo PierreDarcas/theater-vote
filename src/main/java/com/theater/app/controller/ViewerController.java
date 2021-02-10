@@ -37,7 +37,7 @@ public class ViewerController {
         }
     }
 
-    @GetMapping(path = "/{viewerId}")
+    @GetMapping(path = "/id/{viewerId}")
     public ViewerDTO findViewerById(@PathVariable("viewerId") Long viewerId){
         Optional<Viewer> viewer = this.viewerRepository.findById(viewerId);
         if(viewer.isPresent()){
@@ -52,7 +52,7 @@ public class ViewerController {
         return viewerConverter.entityToDTO(viewerRepository.save(this.viewerConverter.dtoToEntity(newViewerDTO)));
     }
 
-    @PutMapping(path ="/{viewerId}")
+    @PutMapping(path ="/update/{viewerId}")
     public ViewerDTO updateViewer(@PathVariable("viewerId") Long viewerId, @RequestBody ViewerDTO newViewerDTO){
         Optional<Viewer> viewer = this.viewerRepository.findById(viewerId);
         if(!viewer.isPresent()){
@@ -64,7 +64,7 @@ public class ViewerController {
         }
     }
 
-    @DeleteMapping(path = "/{viewerId}")
+    @DeleteMapping(path = "/delete/{viewerId}")
     public void deleteById(@PathVariable("viewerId") Long viewerId){
             this.viewerRepository.deleteById(viewerId);
     }
