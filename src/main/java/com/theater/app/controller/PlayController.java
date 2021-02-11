@@ -39,7 +39,7 @@ public class PlayController {
         }
     }
 
-    @GetMapping(path = "/{playId}")
+    @GetMapping(path = "/id/{playId}")
     public PlayDTO findPlayById(@PathVariable("playId") Long playId){
         Optional<Play> play = this.playRepository.findById(playId);
         if(play.isPresent()){
@@ -49,12 +49,12 @@ public class PlayController {
         }
     }
 
-    @PostMapping(path ="/")
+    @PostMapping(path ="/create")
     public PlayDTO createPlay(@RequestBody PlayDTO newPlayDTO){
         return playConverter.entityToDTO(playRepository.save(this.playConverter.dtoToEntity(newPlayDTO)));
     }
 
-    @PutMapping(path ="/{playId}")
+    @PutMapping(path ="/update/{playId}")
     public PlayDTO updatePlay(@PathVariable("playId") Long playId, @RequestBody PlayDTO newPlayDTO){
         Optional<Play> play = this.playRepository.findById(playId);
         if(!play.isPresent()){
@@ -66,7 +66,7 @@ public class PlayController {
         }
     }
 
-    @DeleteMapping(path = "/{playId}")
+    @DeleteMapping(path = "/delete/{playId}")
     public void deletePlay(@PathVariable("playId") Long playId){
         this.playRepository.deleteById(playId);
     }
