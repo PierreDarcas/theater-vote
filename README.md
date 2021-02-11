@@ -35,23 +35,44 @@ http://localhost:8282/toto
 * http://localhost:8282/viewer/delete/* => Necessite un token
 * http://localhost:8282/viewer/update/* => Necessite un token
 
+# Spring security
+
+Pour répondre à l'objectif que je m'étais fixé de limiter l'accés de certaines parties de l'application j'ai implémenté Auth0 dans le package security de mon application.
+L'application demande de fournir un token pour exploter tout les endpoints listé ci dessus.
+
+# ORM JPA
+
+L’accès à la base de données se fait via L’ORM JPA. L’utilisation d’un ORM permet de se sécuriser le code face aux injections SQL, cela dit certaines failles peuvent encore exister.
+
+# Image docker jib
+
+J’ai utilisé le plugin jib pour créer plus facilement mon image docker à partir de mon app spring. Jib crée des images docker minimal sans utiliser de docker-file, ce qui renforce la sécurité de l’image.
+
+# CSRF disable
+
+Le module csrf de spring sécurité a été désactivé. Dans le cadre d’une API destiné à communiqué avec d’autres API il n’est d’une utilité critique, et son activation est gênante puisque seul les requête POST et GET sont authorisées.
 
 # Objectifs de sécurité
 
-1. Confidentialité
-    * /viewer => Mettre en place une authentification par token 0/5
-     
-2. Intégrité
-    * /play => Créer un rôle admin qui sera le seul à pouvoir créer/modifier/supprimer une pièce 0/5
-    * /review => S'assurer que seuls les utilisateurs puissent créer/modifier/supprimer leurs critiques (ainsi qu'un admin/modérateur) 0/5
-    * /viewer => S'assurer que seuls les utilisateurs puissent créer/modifier/supprimer leur informations 0/5
 
+1. Confidentialité
+    * /viewer => La table viewer contient des emails et des mots de passes 5/5
+    * /review => Les critiques sont publiques 0/5
+    * /play => Les informations relatives aux pièces sont publiques 0/5
+
+2. Intégrité
+    * /viewer => Il est toujours possible de regénérer un mot de passe en cas de perte d'intégrité de ce dernier 2/5
+    * /review => Les critiques pourrait être falsifié dans le but de nuire à la réputation de l'établissement 3/5
+    * /play => Les informations relatives aux pièces sont généralement disponibles à d'autres endroits  1/5
 3. Disponibilité
-    * /viewer => S'assurer que seuls les utilisateurs puissent voir leurs informations personnelles 0/5
+    * /viewer => Une perte de disponibilité d'un espace spectateur empêche d'émettre une critique, mais pas de visualiser les pièces  2/5
+    * /review => Si un spectateur ne peut pas émettre une critique lorsqu'il le souhaite, il pourrait se décourager 3/5
+    * /play => Si un spectateur n'a pas accès aux informations sur les pièces, alors il ne viendra surement pas en voir une  4/5
 
 4. Traçabilité
-    * Toute l'application => Mettre en place un système de Log 0/5
-
+    * /viewer => Un spectateur peut vouloir consulter son historique 2/5
+    * /review => On doit pouvoir identifier les critiques déplacé et abusives 5/5
+    * /play => On peut vouloir consulter l'historique du théâtre 1/5
 # Rappel de la consigne 
 
 Projet Individuel
